@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asteroids</title>
+</head>
+<body>
+    <canvas width="500" height="500"></canvas>
+
+    <script src="movingObject.js"></script>
+    <script>
+        var canvas = document.getElementsByTagName("canvas")[0];
+        var m1 = new Asteroids.MovingObject([25,25], 10, [1,1], 15, "black");
+        var m2 = new Asteroids.MovingObject([60,70], 10, [1,1], 15, "red");
+        m1.draw(canvas.getContext("2d"));
+        m2.draw(canvas.getContext("2d"));
+        m1.isCollidedWith(m2);
+        // m.draw(canvas.getContext("2d"));
+ //        m.move();
+ //        m.draw(canvas.getContext("2d"));
+ //        m.move();
+ //        m.draw(canvas.getContext("2d"));
+    </script>
+</body>
+</html>
