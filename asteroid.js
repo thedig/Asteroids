@@ -49,7 +49,7 @@
   };
 
   var randomSpeed = function() {
-    return Math.random() * 20;
+    return (Math.random() * 15 + 5);
   }
 
 
