@@ -41,7 +41,7 @@
   MovingObject.prototype.move = function() {
     var velocity = this.vel();
     this.pos = [this.pos[0] + velocity[0], this.pos[1] + velocity[1]];
-    return this.pos
+    return this.pos;
   }
 
   MovingObject.prototype.vel = function() {

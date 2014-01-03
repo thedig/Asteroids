@@ -25,7 +25,7 @@
     return new Asteroid([startX, startY], startSpeed, startDir);
   };
 
-  var randomDir = function() {
+  var _randomDir = function() {
     var xRand = Math.random();
     var yRand = Math.random();
 
@@ -46,6 +46,15 @@
     }
 
     return [xDir, yDir];
+  };
+
+  var randomDir = function() {
+    var dir;
+    do {
+      dir = _randomDir();
+    } while (dir[0] === 0 && dir[1] === 0);
+
+    return dir;
   };
 
   var randomSpeed = function() {
