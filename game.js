@@ -24,6 +24,14 @@
     }
   };
 
+  Game.prototype.bindKeyHandlers = function() {
+    key('a', function() {
+      alert('you pressed a!');
+    });
+
+    key('up', this.ship.power.bind(this));
+  }
+
   Game.prototype.checkCollisions = function() {
     var game = this;
     game.asteroids.forEach( function(asteroid) {
@@ -79,6 +87,9 @@
   Game.prototype.stop = function() {
     window.clearInterval(this.myInterval);
   }
+
+
+
 
 
 })(this);

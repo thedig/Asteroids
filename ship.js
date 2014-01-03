@@ -11,6 +11,7 @@
   Ship.inherits(Asteroids.MovingObject);
 
   Ship.prototype.power = function(boost) {
+    var boost = boost || 10;
     this.speed += boost;
   }
 
