@@ -10,10 +10,21 @@
 
   Ship.inherits(Asteroids.MovingObject);
 
-  Ship.prototype.power = function(boost) {
-    var boost = boost || 10;
-    this.speed += boost;
-  }
+  Ship.prototype.fireBullet = function(){
 
+  };
+
+  Ship.prototype.power = function(boost) {
+    boost_val = (boost === event) ? 10 : boost;
+    this.speed += boost_val;
+  };
+
+  Ship.prototype.turn = function(dir) {
+    if (dir === "right") {
+
+    } else if (dir === "left") {
+
+    }
+  };
 
 })(this);

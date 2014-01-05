@@ -18,7 +18,6 @@
     var distance =
       Math.sqrt(Math.pow((x - a), 2) + Math.pow((y - b), 2));
     var combinedRadii = this.radius + otherObject.radius;
-    console.log(combinedRadii >= distance);
     return combinedRadii >= distance;
   }
 

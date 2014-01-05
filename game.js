@@ -5,12 +5,11 @@
     this.context = ctx;
     this.asteroids = [];
     this.addAsteroids(5);
-    this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, Asteroids.Game.DIM_Y / 2], 0, [1,1]);
+    this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, 
+      Asteroids.Game.DIM_Y / 2], 0, [1,1]);
+    this.bindKeyHandlers();
   };
 
-  //comment comment comment 123
-
-  // prototype?
   Game.DIM_X = 500;
   Game.DIM_Y = 500;
   Game.STEP_INTERVAL = 50;
@@ -31,7 +30,8 @@
       alert('you pressed a!');
     });
 
-    key('up', this.ship.power.bind(this));
+    key('up', this.ship.power.bind(this.ship));
+    key('right', this.ship.turn.bind(this.ship));
   }
 
   Game.prototype.checkCollisions = function() {
@@ -83,7 +83,6 @@
     this.draw();
     this.checkCollisions();
     this.removeOffAsteroids();
-    console.log(this.asteroids.length);
   };
 
   Game.prototype.stop = function() {
