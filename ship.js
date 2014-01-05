@@ -25,20 +25,18 @@
     this.speed += boost_val;
   };
 
-  Ship.prototype.power = function(boost) {
+  Ship.prototype.slow = function(slow_incr) {
     if (this.speed === 0) {
       return this.speed;
     }
-    boost_val = (boost === event) ? 5 : boost;
-    this.speed += boost_val;
+    boost_val = (slow_incr === event) ? 5 : slow_incr;
+    this.speed -= boost_val;
   };
 
   Ship.prototype.turn = function(dir_event) {
     if (dir_event.keyCode === 39) {  // right keystroke
-      // console.log("right turn");
       var new_dir = this.direction_seq.indexOf(this.dir) + 1;
     } else if (dir_event.keyCode === 37) { // left keystroke
-      // console.log("left turn");
       var new_dir = this.direction_seq.indexOf(this.dir) - 1;
     }
 

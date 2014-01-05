@@ -25,13 +25,6 @@
     return new Asteroid([startX, startY], startSpeed, startDir);
   };
 
-  Asteroid.prototype.isOnBoard = function(dimX, dimY) {
-    return (this.pos[0] > -20) &&
-      (this.pos[0] < (dimX + 20)) &&
-      (this.pos[1] > -20) &&
-      (this.pos[1] < (dimY + 20));
-  };
-
   var _randomDir = function() {
     var xRand = Math.random();
     var yRand = Math.random();
@@ -70,3 +63,5 @@
 
 
 })(this);
+
+

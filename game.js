@@ -32,6 +32,7 @@
     });
 
     key('up', this.ship.power.bind(this.ship));
+    key('down', this.ship.slow.bind(this.ship));
     key('right', this.ship.turn.bind(this.ship));
     key('left', this.ship.turn.bind(this.ship));
     key('space', this.fireBullet.bind(this));
@@ -76,17 +77,38 @@
     game.ship.move();
   };
 
+  Game.prototype.removeAsteroid = function(asteroid_idx) {
+    if (asteroid_idx > -1) {
+      this.asteroids.splice(asteroid_idx, 1);
+    }
+  };
+
+  Game.prototype.removeBullet = function(bullet_idx) {
+    if (bullet_idx > -1) {
+      this.bullets.splice(bullet_idx, 1);
+    }
+  };
+
   Game.prototype.removeOffAsteroids = function () {
     var game = this;
     var asteroidsLeft = [];
 
     for(var i = 0; i < game.asteroids.length; i++) {
-      if (game.asteroids[i].isOnBoard(Game.DIM_X, Game.DIM_Y)) {
-        asteroidsLeft.push(game.asteroids[i]);
+      if (!game.asteroids[i].isOnBoard(Game.DIM_X, Game.DIM_Y)) {
+        this.removeAsteroid(i);
       }
     }
+  };
 
-    game.asteroids = asteroidsLeft;
+  Game.prototype.removeOffBullets = function () {
+    var game = this;
+    var bulletsLeft = [];
+
+    for(var i = 0; i < game.bullets.length; i++) {
+      if (!game.bullets[i].isOnBoard(Game.DIM_X, Game.DIM_Y)) {
+        this.removeBullet(i);
+      }
+    }
   };
 
   Game.prototype.start = function () {
@@ -98,6 +120,7 @@
     this.draw();
     this.checkCollisions();
     this.removeOffAsteroids();
+    this.removeOffBullets();
   };
 
   Game.prototype.stop = function() {

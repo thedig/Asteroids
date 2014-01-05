@@ -38,6 +38,13 @@
     ctx.fill();
   };
 
+  MovingObject.prototype.isOnBoard = function(dimX, dimY) {
+    return (this.pos[0] > -20) &&
+      (this.pos[0] < (dimX + 20)) &&
+      (this.pos[1] > -20) &&
+      (this.pos[1] < (dimY + 20));
+  };
+
   MovingObject.prototype.move = function() {
     var velocity = this.vel();
     this.pos = [this.pos[0] + velocity[0], this.pos[1] + velocity[1]];
