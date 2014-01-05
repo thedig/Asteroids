@@ -8,6 +8,8 @@
     this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, Asteroids.Game.DIM_Y / 2], 0, [1,1]);
   };
 
+  //comment comment comment 123
+
   // prototype?
   Game.DIM_X = 500;
   Game.DIM_Y = 500;
