@@ -8,6 +8,7 @@
       this.dir = dir;
       this.radius = radius;
       this.color = color;
+      this.direction_seq = [[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1],[1,0],[1,1]];
     };
 
   MovingObject.prototype.isCollidedWith = function(otherObject) {
