@@ -16,7 +16,7 @@
 			var collide = aster.isCollidedWith(bullet);
 			if (collide) {
 				bullet.game.removeAsteroid(asterIdx)
-				return (asterIdx + 1);
+				// bullet.game.removeBullet()
 			}
 		})
 	}

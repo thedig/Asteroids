@@ -78,33 +78,33 @@
   };
 
   Game.prototype.removeAsteroid = function(asteroidIdx) {
-    // if (asteroidIdx > -1) {
-      // this.asteroids.splice(asteroidIdx, 1);
-      // console.log(this.asteroids);
-    // }
-
-    console.log("in remove asteroid");
-    var game = this;
-    var asteroidsLeft = [];
-
-    console.log(asteroidIdx);
-    for(var i = 0; i < game.asteroids.length; i++) {
-      if (i != asteroidIdx) {
-        asteroidsLeft.push(game.asteroids[i]);
-      }
-      else {
-        console.log(asteroidIdx);
-        console.log("and " + i);
-      }
+    console.log(this.asteroids);
+    if (asteroidIdx > -1) {
+      this.asteroids = this.bullets.splice(asteroidIdx, 1);
+      console.log("asteroid #" + asteroidIdx + " removed");
+      console.log(this.asteroids);
     }
-    console.log(game.asteroids);
-    game.asteroids = asteroidsLeft;
-    console.log(game.asteroids);
+
+    // var game = this;
+    // var asteroidsLeft = [];
+
+    // for(var i = 0; i < game.asteroids.length; i++) {
+    //   if (i != asteroidIdx) {
+    //     asteroidsLeft.push(game.asteroids[i]);
+    //   }
+    //   else {
+    //     console.log("asteroid #" + asteroidIdx + " removed");
+    //   }
+    // }
+    // game.asteroids = asteroidsLeft;
   };
 
   Game.prototype.removeBullet = function(bullet_idx) {
+    console.log(this.bullets);
     if (bullet_idx > -1) {
-      this.bullets = this.bullets.splice(bullet_idx, 1);
+      this.bullets = this.bullets.splice(bullet_idx, 1);      
+      console.log("asteroid #" + bullet_idx + " removed");
+      console.log(this.bullets);
     }
   };
 
@@ -145,16 +145,8 @@
     this.checkCollisions();
     this.removeOffAsteroids();
     this.removeOffBullets();
-    this.bullets.forEach(function(bullet, bulletIdx) { //refactor?
-      console.log("in foreach loop");
+    this.bullets.forEach(function(bullet, bulletIdx) {
       bullet.hitAsteroids();
-      // console.log(bullet.hitAsteroids());
-      // if (collidedAsteroidIdx) {
-        // var realAsterIdx = (collidedAsteroidIdx - 1);
-        // console.log("got here ???");
-        // game.removeAsteroid(realAsterIdx);
-        // game.removeBullet(bulletIdx);
-      // }
     })
   };
 
