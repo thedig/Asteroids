@@ -5,7 +5,7 @@
     this.context = ctx;
     this.asteroids = [];
     this.bullets = [];
-    this.addAsteroids(5);
+    this.addAsteroids(5, false);
     this.newAsteroidTimer = 0;
     this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, 
       Asteroids.Game.DIM_Y / 2], 0, [0,1]);
@@ -16,13 +16,13 @@
   Game.DIM_Y = 500;
   Game.STEP_INTERVAL = 50;
 
-  Game.prototype.addAsteroids = function(numAsteroids) {
+  Game.prototype.addAsteroids = function(numAsteroids, offBoard) {
     for(var i = 0; i < numAsteroids; i++) {
       this.asteroids.push(
         Asteroids
         .Asteroid
         .prototype
-        .randomAsteroid(Game.DIM_X, Game.DIM_Y)
+        .randomAsteroid(Game.DIM_X, Game.DIM_Y, offBoard)
       );
     }
   };
@@ -94,13 +94,28 @@
     game.asteroids = asteroidsLeft;
   };
 
-  Game.prototype.removeBullet = function(bullet_idx) {
+  Game.prototype.removeBullet = function(bulletIdx) {
+
+    // if (bulletIdx > -1) {
+    //   this.bullets = this.bullets.splice(bulletIdx, 1);      
+    //   console.log("bullet #" + bullet_idx + " removed");
+    //   console.log(this.bullets);
+    // }
+
+    var game = this;
+    var bulletsLeft = [];
+
     console.log(this.bullets);
-    if (bullet_idx > -1) {
-      this.bullets = this.bullets.splice(bullet_idx, 1);      
-      console.log("bullet #" + bullet_idx + " removed");
-      console.log(this.bullets);
+    for(var i = 0; i < game.bullets.length; i++) {
+      if (i != bulletIdx) {
+        bulletsLeft.push(game.bullets[i]);
+      }
+      else {
+        console.log("bullet #" + bulletIdx + " removed");
+      }
     }
+    game.bullets = bulletsLeft;
+    console.log(this.bullets);
   };
 
   Game.prototype.removeOffAsteroids = function () {
@@ -140,7 +155,7 @@
     this.checkCollisions();
     this.removeOffAsteroids();
     this.removeOffBullets();
-    this.bullets.forEach(function(bullet, bulletIdx) {
+    this.bullets.forEach(function(bullet, bulletIdx) { // refactor
       var hit = bullet.hitAsteroids(bulletIdx);
       if (hit) {
         game.removeBullet(bulletIdx);
@@ -148,7 +163,7 @@
     })
 
     this.newAsteroidTimer ++;
-    if (this.newAsteroidTimer === 50) {
+    if (this.newAsteroidTimer === 50) { // refactor
       this.addAsteroids(1);
       this.newAsteroidTimer = 0;
     }
