@@ -83,11 +83,11 @@
       // console.log(this.asteroids);
     // }
 
-    console.log("got here");
+    console.log("in remove asteroid");
     var game = this;
     var asteroidsLeft = [];
 
-
+    console.log(asteroidIdx);
     for(var i = 0; i < game.asteroids.length; i++) {
       if (i != asteroidIdx) {
         asteroidsLeft.push(game.asteroids[i]);
@@ -97,7 +97,9 @@
         console.log("and " + i);
       }
     }
+    console.log(game.asteroids);
     game.asteroids = asteroidsLeft;
+    console.log(game.asteroids);
   };
 
   Game.prototype.removeBullet = function(bullet_idx) {
@@ -144,15 +146,15 @@
     this.removeOffAsteroids();
     this.removeOffBullets();
     this.bullets.forEach(function(bullet, bulletIdx) { //refactor?
-      var collidedAsteroidIdx = bullet.hitAsteroids();
-      console.log("got here !!!!!");
-      console.log(collidedAsteroidIdx);
-      if (collidedAsteroidIdx) {
-        var realAsterIdx = (collidedAsteroidIdx - 1);
-        console.log("got here ???");
-        game.removeAsteroid(realAsterIdx);
-        game.removeBullet(bulletIdx);
-      }
+      console.log("in foreach loop");
+      bullet.hitAsteroids();
+      // console.log(bullet.hitAsteroids());
+      // if (collidedAsteroidIdx) {
+        // var realAsterIdx = (collidedAsteroidIdx - 1);
+        // console.log("got here ???");
+        // game.removeAsteroid(realAsterIdx);
+        // game.removeBullet(bulletIdx);
+      // }
     })
   };
 

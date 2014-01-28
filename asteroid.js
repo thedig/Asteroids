@@ -10,7 +10,6 @@
   var Asteroid = Asteroids.Asteroid = function() {
     var args = Array.prototype.slice.call(arguments);
     Asteroids.MovingObject.apply(this, args);
-    // COLOR : "black";
     this.color = "brown";
     this.radius = 10;
   };
