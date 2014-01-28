@@ -18,20 +18,14 @@
 
   Game.prototype.addAsteroids = function(numAsteroids, offBoard) {
     for(var i = 0; i < numAsteroids; i++) {
-      this.asteroids.push(
-        Asteroids
-        .Asteroid
-        .prototype
-        .randomAsteroid(Game.DIM_X, Game.DIM_Y, offBoard)
-      );
+      var newAsteroid = Asteroids.Asteroid.prototype.randomAsteroid(Game.DIM_X, Game.DIM_Y, offBoard)
+      if (newAsteroid) {
+        this.asteroids.push(newAsteroid)
+      }
     }
   };
 
   Game.prototype.bindKeyHandlers = function() {
-    key('a', function() {
-      alert('you pressed a!');
-    });
-
     key('up', this.ship.power.bind(this.ship));
     key('down', this.ship.slow.bind(this.ship));
     key('right', this.ship.turn.bind(this.ship));
@@ -79,7 +73,6 @@
   };
 
   Game.prototype.removeAsteroid = function(asteroidIdx) {
-
     var game = this;
     var asteroidsLeft = [];
 
@@ -87,21 +80,11 @@
       if (i != asteroidIdx) {
         asteroidsLeft.push(game.asteroids[i]);
       }
-      else {
-        console.log("asteroid #" + asteroidIdx + " removed");
-      }
     }
     game.asteroids = asteroidsLeft;
   };
 
   Game.prototype.removeBullet = function(bulletIdx) {
-
-    // if (bulletIdx > -1) {
-    //   this.bullets = this.bullets.splice(bulletIdx, 1);      
-    //   console.log("bullet #" + bullet_idx + " removed");
-    //   console.log(this.bullets);
-    // }
-
     var game = this;
     var bulletsLeft = [];
 
@@ -109,9 +92,6 @@
     for(var i = 0; i < game.bullets.length; i++) {
       if (i != bulletIdx) {
         bulletsLeft.push(game.bullets[i]);
-      }
-      else {
-        console.log("bullet #" + bulletIdx + " removed");
       }
     }
     game.bullets = bulletsLeft;
@@ -164,7 +144,7 @@
 
     this.newAsteroidTimer ++;
     if (this.newAsteroidTimer === 50) { // refactor
-      this.addAsteroids(1);
+      this.addAsteroids(2, true);
       this.newAsteroidTimer = 0;
     }
   };

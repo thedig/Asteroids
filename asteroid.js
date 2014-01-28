@@ -17,15 +17,31 @@
   Asteroid.inherits(Asteroids.MovingObject);
 
   Asteroid.prototype.randomAsteroid = function(dimX, dimY, offBoard) {
+    var startX, startY;
+
     if (offBoard) {
+      var range = 0;
+      var startEnd = Math.random();
+      var whichCoordFixed = Math.random();
+
+      if (whichCoordFixed < 0.5) {
+        if (startEnd < 0.5) range = dimX - 1;
+        startX = range + Math.random();
+        startY = Math.random() * dimY;
+      } else {
+        if (startEnd < 0.5) range = dimY - 1;
+        startY = range + Math.random();
+        startX = Math.random() * dimX;
+      }
       console.log("generate offboard asteroid")
     } else {
-    var startX = Math.random() * dimX;
-    var startY = Math.random() * dimY;
+      startX = Math.random() * dimX;
+      startY = Math.random() * dimY;
+    } 
     var startSpeed = randomSpeed();
     var startDir = randomDir();
     return new Asteroid([startX, startY], startSpeed, startDir);
-    }
+
   };
 
   var _randomDir = function() {
