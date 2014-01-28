@@ -6,6 +6,7 @@
     this.asteroids = [];
     this.bullets = [];
     this.addAsteroids(5);
+    this.newAsteroidTimer = 0;
     this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, 
       Asteroids.Game.DIM_Y / 2], 0, [0,1]);
     this.bindKeyHandlers();
@@ -145,6 +146,12 @@
         game.removeBullet(bulletIdx);
       }
     })
+
+    this.newAsteroidTimer ++;
+    if (this.newAsteroidTimer === 50) {
+      this.addAsteroids(1);
+      this.newAsteroidTimer = 0;
+    }
   };
 
   Game.prototype.stop = function() {
