@@ -10,11 +10,9 @@
 
   Ship.inherits(Asteroids.MovingObject);
 
-  Ship.prototype.fireBullet = function(){
+  Ship.prototype.fireBullet = function(game){
     var ship = this;
-    console.log(ship.pos);
-    console.log(ship.dir);
-    return new Asteroids.Bullet(ship.pos, 30, ship.dir);
+    return new Asteroids.Bullet(ship.pos, 30, ship.dir, 13, "black", game);
   };
 
   Ship.prototype.power = function(boost) {

@@ -58,9 +58,8 @@
   };
 
   var randomSpeed = function() {
-    return (Math.random() * 15 + 5);
+    return (Math.random() * 5 + 0);
   }
-
 
 })(this);
 
