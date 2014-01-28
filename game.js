@@ -78,32 +78,26 @@
   };
 
   Game.prototype.removeAsteroid = function(asteroidIdx) {
-    console.log(this.asteroids);
-    if (asteroidIdx > -1) {
-      this.asteroids = this.bullets.splice(asteroidIdx, 1);
-      console.log("asteroid #" + asteroidIdx + " removed");
-      console.log(this.asteroids);
+
+    var game = this;
+    var asteroidsLeft = [];
+
+    for(var i = 0; i < game.asteroids.length; i++) {
+      if (i != asteroidIdx) {
+        asteroidsLeft.push(game.asteroids[i]);
+      }
+      else {
+        console.log("asteroid #" + asteroidIdx + " removed");
+      }
     }
-
-    // var game = this;
-    // var asteroidsLeft = [];
-
-    // for(var i = 0; i < game.asteroids.length; i++) {
-    //   if (i != asteroidIdx) {
-    //     asteroidsLeft.push(game.asteroids[i]);
-    //   }
-    //   else {
-    //     console.log("asteroid #" + asteroidIdx + " removed");
-    //   }
-    // }
-    // game.asteroids = asteroidsLeft;
+    game.asteroids = asteroidsLeft;
   };
 
   Game.prototype.removeBullet = function(bullet_idx) {
     console.log(this.bullets);
     if (bullet_idx > -1) {
       this.bullets = this.bullets.splice(bullet_idx, 1);      
-      console.log("asteroid #" + bullet_idx + " removed");
+      console.log("bullet #" + bullet_idx + " removed");
       console.log(this.bullets);
     }
   };
@@ -146,7 +140,10 @@
     this.removeOffAsteroids();
     this.removeOffBullets();
     this.bullets.forEach(function(bullet, bulletIdx) {
-      bullet.hitAsteroids();
+      var hit = bullet.hitAsteroids(bulletIdx);
+      if (hit) {
+        game.removeBullet(bulletIdx);
+      }
     })
   };
 
