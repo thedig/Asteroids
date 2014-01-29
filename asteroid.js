@@ -77,7 +77,7 @@
   };
 
   var randomSpeed = function() {
-    return (Math.random() * 5 + 0);
+    return (Math.random() * 4 + 4);
   }
 
 })(this);

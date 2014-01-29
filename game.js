@@ -44,8 +44,10 @@
   };
 
   Game.prototype.draw = function () {
+
     var game = this;
     game.context.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    ctx.drawImage(img, 0, 0);
     game.asteroids.forEach(function (asteroid) {
       asteroid.draw(game.context);
     });
@@ -126,6 +128,11 @@
 
   Game.prototype.start = function () {
     this.myInterval = setInterval(this.step.bind(this), Game.STEP_INTERVAL);
+    img = new Image();
+    img.onload = function(){
+      ctx.drawImage(img, 0, 0);
+    };  
+    img.src = 'outer-space-stars.jpeg';
   };
 
   Game.prototype.step = function (){
@@ -143,8 +150,8 @@
     })
 
     this.newAsteroidTimer ++;
-    if (this.newAsteroidTimer === 50) { // refactor
-      this.addAsteroids(2, true);
+    if (this.newAsteroidTimer === 20) { // refactor
+      this.addAsteroids(1, true);
       this.newAsteroidTimer = 0;
     }
   };

@@ -4,6 +4,7 @@
   var Ship = Asteroids.Ship = function () {
     var args = Array.prototype.slice.call(arguments);
     Asteroids.MovingObject.apply(this, args);
+    
     this.color = "blue";
     this.radius = 15;
   };
@@ -12,7 +13,7 @@
 
   Ship.prototype.fireBullet = function(game){
     var ship = this;
-    return new Asteroids.Bullet(ship.pos, 30, ship.dir, 13, "black", game);
+    return new Asteroids.Bullet(ship.pos, 30, ship.dir, 3, "black", game);
   };
 
   Ship.prototype.power = function(boost) {

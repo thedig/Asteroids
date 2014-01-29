@@ -62,6 +62,3 @@
 
 })(this);
 
-
-// m1 = new MovingObject([25,25], 10, [1,1], 15, "black");
-// m2 = new MovingObject([40,40], 10, [1,1], 15, "red");
