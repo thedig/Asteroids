@@ -8,7 +8,7 @@
     this.addAsteroids(5, false);
     this.newAsteroidTimer = 0;
     this.ship = new Asteroids.Ship([Asteroids.Game.DIM_X / 2, 
-      Asteroids.Game.DIM_Y / 2], 0, [0,1]);
+      Asteroids.Game.DIM_Y / 2], 0, [0,-1]);
     this.bindKeyHandlers();
   };
 
@@ -132,7 +132,7 @@
     img.onload = function(){
       ctx.drawImage(img, 0, 0);
     };  
-    img.src = 'outer-space-stars.jpeg';
+    img.src = 'space2.jpg';
   };
 
   Game.prototype.step = function (){

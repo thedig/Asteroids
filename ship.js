@@ -13,7 +13,7 @@
 
   Ship.prototype.fireBullet = function(game){
     var ship = this;
-    return new Asteroids.Bullet(ship.pos, 30, ship.dir, 3, "black", game);
+    return new Asteroids.Bullet(ship.pos, 30, ship.dir, 3, "white", game);
   };
 
   Ship.prototype.power = function(boost) {
@@ -41,8 +41,7 @@
 
     if(new_dir > 7) {
       new_dir = 0;
-    }
-    else if(new_dir < 0) {
+    } else if(new_dir < 0) {
       new_dir = 7;
     }
     this.dir = this.direction_seq[new_dir];
