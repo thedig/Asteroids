@@ -2,15 +2,28 @@
 <html>
 <head>
     <title>Asteroids</title>
-
+    <link href="style.css" rel="stylesheet" type="text/css">
     <script src="keymaster.js"></script>
     <script src="movingObject.js"></script>
     <script src="asteroid.js"></script>
     <script src="game.js"></script>
     <script src="ship.js"></script>
     <script src="bullet.js"></script>
+
 </head>
 <body>
+    <div id="title">
+        <h3>Asteroids!</h3>
+        <p>To play:</p>
+        <ul>
+            <li>Up key to start / increase speed</li>
+            <li>Down key to slow down / stop</li>
+            <li>Left and right keys to turn relative to ship direction</li>
+            <li>Space bar to shoot</li>
+        </ul>
+    </div>
+    <div id="main">
+
     <canvas width="500" height="500"></canvas>
 
     <script>
@@ -19,5 +32,10 @@
         var g1 = new Asteroids.Game(ctx);
         g1.start();
     </script>
+
+    </div>
+    <div id="controls">
+        <button onclick="window.location.href=''">Refresh</buttion>
+    </div>
 </body>
 </html>

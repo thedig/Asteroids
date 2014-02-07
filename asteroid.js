@@ -33,7 +33,6 @@
         startY = range + Math.random();
         startX = Math.random() * dimX;
       }
-      console.log("generate offboard asteroid")
     } else {
       startX = Math.random() * dimX;
       startY = Math.random() * dimY;
