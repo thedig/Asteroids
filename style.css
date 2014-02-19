@@ -12,8 +12,18 @@ div{
 #main{
 	border: 5px solid #aad;
 	width: 500px;
+	height: 500px;
 }
 
+#title{
+	height: 500px;
+	position: absolute;
+}
+
+.panel{
+	display: inline-block;
+	position: relative;
+}
 
 button {
 	background-color: black;

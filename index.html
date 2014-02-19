@@ -12,18 +12,8 @@
 
 </head>
 <body>
-    <div id="title">
-        <h3>Asteroids!</h3>
-        <p>To play:</p>
-        <ul>
-            <li>Up key to start / increase speed</li>
-            <li>Down key to slow down / stop</li>
-            <li>Left and right keys to turn relative to ship direction</li>
-            <li>Space bar to shoot</li>
-        </ul>
-    </div>
-    <div id="main">
 
+    <div class="panel" id="main">
     <canvas width="500" height="500"></canvas>
 
     <script>
@@ -34,8 +24,22 @@
     </script>
 
     </div>
-    <div id="controls">
-        <button onclick="window.location.href=''">Refresh</button>
+
+    <div class="panel" id="title">
+      <h3>Asteroids!</h3>
+      <p>To play:</p>
+      <ul>
+          <li>Up key to start / increase speed</li>
+          <li>Down key to slow down / stop</li>
+          <li>Left and right keys to turn relative to ship direction</li>
+          <li>Space bar to shoot</li>
+      </ul>
+
+      <div id="controls">
+      <button onclick="window.location.href=''">Refresh</button>
+      </div>
+
     </div>
+
 </body>
 </html>
